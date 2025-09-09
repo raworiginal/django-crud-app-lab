@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block content %}
+
+<section class="logo-container">
+	<div class="record-container">
+		<img
+			src="{% static '/images/vinyl-record-4572382_1280.png' %}"
+			alt="A Vinyl Record" />
+	</div>
+	<h1 class="title">Vinyl Collector</h1>
+</section>
+
+{% endblock %}

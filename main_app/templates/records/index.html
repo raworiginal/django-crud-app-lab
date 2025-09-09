@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/records/record-index.css' %}" />
+{% endblock %} {% block content %}
+
+<section class="page-header">
+	<h1>Record List</h1>
+	<img
+		src="{% static '/images/vinyl-record-4572382_1280.png' %}"
+		alt="A cool record" />
+	<img
+		src="{% static '/images/vinyl-record-4572382_1280.png' %}"
+		alt="A cool record" />
+	<img
+		src="{% static '/images/vinyl-record-4572382_1280.png' %}"
+		alt="A cool record" />
+</section>
+
+<section class="card-container">
+	{% for record in records %}
+	<a href="{%url 'record-detail' record.id%}">
+		<div class="card">
+			<div class="card-content">
+				<h2 class="card-title">{{ record.title }}</h2>
+				<h3>{{record.artist}}</h3>
+				<h4>{{record.release_date}}</h4>
+			</div>
+		</div>
+	</a>
+	{% endfor %}
+</section>
+
+{% endblock %}

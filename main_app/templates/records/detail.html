@@ -6,6 +6,12 @@
 		<h1>{{record.title}}</h1>
 		<h2>{{record.artist}}</h2>
 		<h3>{{record.release_date}}</h3>
+		<div class="record-actions">
+			<a href="{% url 'record-update' record.id %}" class="btn warn">Edit</a>
+			<a href="{% url 'record-delete' record.id %}" class="btn danger"
+				>Delete</a
+			>
+		</div>
 	</div>
 </section>
 {% endblock %}

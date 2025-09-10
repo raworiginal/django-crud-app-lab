@@ -13,5 +13,41 @@
 			>
 		</div>
 	</div>
+	<div class="track-container">
+		<h3>Add A Track</h3>
+		<form
+			action="{% url 'add-track' record.id %}"
+			method="post"
+			class="subsection-content"
+			autocomplete="off">
+			{% csrf_token %} {{track_form.as_p}}
+			<button type="submit" class="btn submit">Add track</button>
+		</form>
+		<h2>Track Listing</h2>
+		{% if record.track_set.all.count %}
+		<table>
+			<thead>
+				<tr>
+					<th>Track No.</th>
+					<th>Track Title</th>
+					<th>Duration</th>
+				</tr>
+			</thead>
+			<tbody>
+				{%for track in record.track_set.all%}
+				<tr>
+					<td>{{track.track_no}}</td>
+					<td>{{track.title}}</td>
+					<td>{{track.duration}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			{% else %}
+		</table>
+		<div>
+			<p>No Tracks added</p>
+		</div>
+		{% endif %}
+	</div>
 </section>
 {% endblock %}

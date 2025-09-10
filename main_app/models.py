@@ -14,3 +14,14 @@ class Record(models.Model):
 
   def get_absolute_url(self):
     return reverse("record-detail", kwargs={"record_id": self.id})
+
+
+class Track(models.Model):
+  track_no = models.IntegerField()
+  title = models.CharField()
+  duration = models.DurationField()
+
+  record = models.ForeignKey(Record, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.title

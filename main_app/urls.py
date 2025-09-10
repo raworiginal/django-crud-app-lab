@@ -12,4 +12,6 @@ urlpatterns = [
          views.RecordUpdate.as_view(), name="record-update"),
     path("records/<int:pk>/delete/",
          views.RecordDelete.as_view(), name="record-delete"),
+    path("records/<int:record_id>/add-track/",
+         views.add_track, name="add-track")
 ]

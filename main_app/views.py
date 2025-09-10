@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Record
+from .forms import TrackForm
 
 # Create your views here.
 
@@ -35,4 +36,14 @@ def record_index(request):
 
 def record_detail(request, record_id):
   record = Record.objects.get(id=record_id)
-  return render(request, "records/detail.html", {"record": record})
+  track_form = TrackForm()
+  return render(request, "records/detail.html", {"record": record, "track_form": track_form})
+
+
+def add_track(request, record_id):
+  form = TrackForm(request.POST)
+  if form.is_valid():
+    new_track = form.save(commit=False)
+    new_track.record_id = record_id
+    new_track.save()
+  return redirect("record-detail", record_id=record_id)

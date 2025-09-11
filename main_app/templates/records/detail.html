@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% block head %} {% endblock %}
 {%block content %}
 <section class="record-container">
-	<div class="record-details">
-		<h1>{{record.title}}</h1>
+	<article class="record-details">
+		<h1 class="rock-salt-regular">{{record.title}}</h1>
 		<h2>{{record.artist}}</h2>
 		<h3>{{record.release_date}}</h3>
 		<div class="record-actions">
@@ -10,18 +10,22 @@
 			<a href="{% url 'record-delete' record.id %}" class="btn danger"
 				>Delete</a
 			>
-		</div>
+    </article>
 	</div>
-	<div class="track-container">
-		<h3>Add A Track</h3>
-		<form
-			action="{% url 'add-track' record.id %}"
-			method="post"
-			class="subsection-content"
-			autocomplete="off">
-			{% csrf_token %} {{track_form.as_table}}
-			<button type="submit" class="btn submit">Add track</button>
-		</form>
+	<dialog id="track-add-form">
+		<article>
+			<form
+				action="{% url 'add-track' record.id %}"
+				method="post"
+				class="subsection-content"
+				autocomplete="off">
+				<h3>Add A Track</h3>
+				{% csrf_token %} {{track_form.as_table}}
+				<button type="submit" class="btn submit">Add track</button>
+			</form>
+		</article>
+	</dialog>
+	<article class="track-container">
 		<h2>Track Listing</h2>
 		{% if record.track_set.all.count %}
 		<table>
@@ -41,12 +45,13 @@
 				</tr>
 				{% endfor %}
 			</tbody>
-			{% else %}
 		</table>
+		{% else %}
 		<div>
-			<p>No Tracks added</p>
+      <p>No Tracks added</p>
 		</div>
 		{% endif %}
-	</div>
+    <button id="track-add-btn">add track</button>
+	</article>
 </section>
 {% endblock %}

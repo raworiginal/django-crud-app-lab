@@ -6,14 +6,15 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.cyan.min.css" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
 			href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap"
 			rel="stylesheet" />
-		<link rel="shortcut icon" type="image/png" href="" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.cyan.min.css" />
+		<link rel="stylesheet" href="{% static "css/base.css" %}">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="{% static "js/modal.js" %}" defer></script>
 		<title>Vinyl Collector</title>
 		{% block head %} {% endblock %}
 	</head>
@@ -23,10 +24,8 @@
 				<ul>
 					<li>
 						<a href="/">
-							<img
-								class="logo"
-								src="https://unsplash.com/illustrations/a-green-disk-with-a-white-disk-on-top-of-it-AmudDlLTK_A"
-								alt="The Vinyl Collector Logo" />
+							<img class="nav-logo" src="{% static "images/vinyl-record.png" %}"
+							alt="Vinyl Collector Logo" />
 						</a>
 					</li>
 				</ul>

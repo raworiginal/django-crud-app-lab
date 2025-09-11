@@ -1,6 +1,5 @@
-{% extends "base.html" %} {% load static %} {% block head %}
-<link rel="stylesheet" href="{%static 'css/form.css'%}" />
-{% endblock head %} {% block content %}
+{% extends "base.html" %} {% load static %} {% block head %} {% endblock head %}
+{% block content %}
 <div class="page-header">
 	{% if record %}
 	<h1>Edit {{record.title}}</h1>

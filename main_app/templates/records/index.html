@@ -1,19 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block head %}
-<link rel="stylesheet" href="{% static 'css/records/record-index.css' %}" />
-{% endblock %} {% block content %}
-
-<section class="page-header">
-	<h1>Record List</h1>
-	<img
-		src="{% static '/images/vinyl-record-4572382_1280.png' %}"
-		alt="A cool record" />
-	<img
-		src="{% static '/images/vinyl-record-4572382_1280.png' %}"
-		alt="A cool record" />
-	<img
-		src="{% static '/images/vinyl-record-4572382_1280.png' %}"
-		alt="A cool record" />
-</section>
+{% extends 'base.html' %} {% load static %} {% block head %} {% endblock %}
+{%block content %}
+<section class="page-header"></section>
 
 <section class="card-container">
 	{% for record in records %}

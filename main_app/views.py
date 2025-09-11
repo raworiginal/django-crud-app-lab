@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Record
-from .forms import TrackForm
+from .models import Record, Track
+from .forms import TrackForm, RecordForm
 
 # Create your views here.
 
 
 class RecordCreate(CreateView):
   model = Record
-  fields = "__all__"
+  form_class = RecordForm
 
 
 class RecordUpdate(UpdateView):
@@ -46,4 +46,13 @@ def add_track(request, record_id):
     new_track = form.save(commit=False)
     new_track.record_id = record_id
     new_track.save()
+  return redirect("record-detail", record_id=record_id)
+
+
+def update_track(request, record_id, track_id):
+  track = get_object_or_404(Track, id=track_id)
+  form = TrackForm(request.POST)
+  if form.is_valid():
+    updated_track = form.save(commit=False)
+    updated_track.save()
   return redirect("record-detail", record_id=record_id)

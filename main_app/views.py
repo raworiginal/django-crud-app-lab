@@ -61,16 +61,6 @@ def add_track(request, record_id):
   return redirect("record-detail", record_id=record_id)
 
 
-@login_required
-def update_track(request, record_id, track_id):
-  track = get_object_or_404(Track, id=track_id)
-  form = TrackForm(request.POST)
-  if form.is_valid():
-    updated_track = form.save(commit=False)
-    updated_track.save()
-  return redirect("record-detail", record_id=record_id)
-
-
 def signup(request):
   error_message = ''
   if request.method == 'POST':

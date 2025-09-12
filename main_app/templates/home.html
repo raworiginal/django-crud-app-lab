@@ -1,12 +1,21 @@
 {% extends 'base.html' %} {% load static %} {% block head %} {% endblock %}
 {%block content %}
-
-<section>
-	<article class="landing-container">
-		<img class='landing-logo' src="{% static "images/vinyl-record.png" %}"
-		alt="">
-		<h1 class="rock-salt-regular">Vinyl Collector</h1>
-	</article>
-</section>
-
-{% endblock %}
+<article>
+	<section>
+		<article class="landing-container">
+			<img class='landing-logo' src="{% static "images/vinyl-record.png" %}"
+			alt="">
+			<h1 class="rock-salt-regular">Vinyl Collector</h1>
+		</article>
+	</section>
+	{% if not user.is_authenticated %}
+	<section>
+		<form action="{% url 'home' %}" method="post" class="login">
+			<h1>Login</h1>
+			{% csrf_token %} {{ form.as_p }}
+			<input type="hidden" name="next" value="{{ next }}" />
+			<button type="submit" class="btn submit">Login</button>
+		</form>
+	</section>
+</article>
+{% endif %} {% endblock %}

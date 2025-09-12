@@ -30,9 +30,21 @@
 					</li>
 				</ul>
 				<ul>
+          {% if user.is_authenticated %}
 					<li><a href="{% url 'record-index'%}">All Records</a></li>
 					<li><a href="{% url 'record-create' %}">Add Record</a></li>
 					<li><a href="{% url 'about'%}">About</a></li>
+          <li>
+            <form id="logout-form" method="post" action="{% url "logout" %}">
+              {% csrf_token %}
+              <button role="button" type="submit">Log Out</button>
+            </form>
+          </li>
+          {% else %}
+					<li><a href="{% url 'about'%}">About</a></li>
+					<li><a role="button" href="{% url 'home'%}">Login</a></li>
+          <li><a role="button" href="{% url 'signup' %}">Signup</a></li>
+          {% endif %}
 				</ul>
 			</nav>
 		</header>
